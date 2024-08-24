@@ -7,7 +7,9 @@ class Optionscard extends StatelessWidget {
       required this.questionIndex,
       required this.optionindex,
       this.onTap,
-      required this.col});
+      required this.col,
+      this.passindex});
+  final int? passindex;
   final int questionIndex;
   final int optionindex;
   final void Function()? onTap;
@@ -31,7 +33,8 @@ class Optionscard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                DummyDb.questions[questionIndex]['options'][optionindex]
+                DummyDb.categorizedQuestions[passindex!][questionIndex]
+                        ['options'][optionindex]
                     .toString(),
                 style: const TextStyle(color: Colors.white, fontSize: 18),
               ),

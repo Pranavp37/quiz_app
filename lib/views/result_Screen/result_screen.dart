@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:quiz/dummy_db.dart';
+import 'package:quiz/views/home_screen/home_screen.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key, required this.correctAns});
   final int correctAns;
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
+  @override
+  void initState() {
+    getpercentage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +29,18 @@ class ResultScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   3,
-                  (index) => Icon(
-                    Icons.grade,
-                    color: Colors.amber,
-                    size: index == 1 ? 80 : 50,
+                  (index) => Padding(
+                    padding: EdgeInsets.only(
+                      bottom: index == 1 ? 50 : 0,
+                      left: 15,
+                      right: 15,
+                    ),
+                    child: Icon(
+                      Icons.grade,
+                      color:
+                          index < getpercentage() ? Colors.amber : Colors.grey,
+                      size: index == 1 ? 80 : 50,
+                    ),
                   ),
                 )),
             const Text(
@@ -29,15 +48,15 @@ class ResultScreen extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 32),
             ),
             Text(
-              '${correctAns + 1} / ${DummyDb.questions.length}',
+              '${widget.correctAns} / ${DummyDb.questions.length}',
               style: const TextStyle(color: Colors.green, fontSize: 35),
             ),
             Text(
-              'Correct Answers:$correctAns',
+              'Correct Answers:${widget.correctAns}',
               style: const TextStyle(color: Colors.white, fontSize: 19),
             ),
             Text(
-              'Wrong Answers:${DummyDb.questions.length - correctAns}',
+              'Wrong Answers:${DummyDb.questions.length - widget.correctAns}',
               style: const TextStyle(color: Colors.white, fontSize: 19),
             ),
             const Text(
@@ -48,7 +67,7 @@ class ResultScreen extends StatelessWidget {
               height: 30,
             ),
             GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const HomeScreen(),)),
               child: Container(
                   height: 50,
                   width: 100,
@@ -67,5 +86,18 @@ class ResultScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int getpercentage() {
+    double percentage = (widget.correctAns / DummyDb.questions.length) * 100;
+    if (percentage >= 80) {
+      return 3;
+    } else if (percentage >= 50) {
+      return 2;
+    } else if (percentage >= 30) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }

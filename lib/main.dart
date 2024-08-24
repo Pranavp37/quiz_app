@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/views/category_Screen/category_screen.dart';
 import 'package:quiz/views/home_screen/home_screen.dart';
 import 'package:quiz/views/result_Screen/result_screen.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: CategoryScreen(),
     );
   }
 }

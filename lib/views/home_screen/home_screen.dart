@@ -1,12 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:quiz/dummy_db.dart';
 import 'package:quiz/views/result_Screen/result_screen.dart';
 import 'package:quiz/views/widgets/optionsCard/optionscard.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    this.passindex,
+  });
+  final int? passindex;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -25,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 25),
           child: Column(
             children: [
-              _buildQuestionSection(),
+              _buildQuestionSection(widget.passindex!),
               const SizedBox(
                 height: 30,
               ),
@@ -39,13 +42,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           answerIndex = index;
                         });
                         if (answerIndex ==
-                            DummyDb.questions[questionIndex]['answer']) {
+                            DummyDb.categorizedQuestions[widget.passindex!]
+                                [questionIndex]['answer']) {
                           rightAnswerCount++;
                         }
                       }
                     },
                     questionIndex: questionIndex,
                     optionindex: index,
+                    passindex: widget.passindex,
                     col: getColor(index),
                   ),
                 ),
@@ -91,11 +96,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Color getColor(int index) {
     if (answerIndex != null) {
-      if (index == DummyDb.questions[questionIndex]['answer']) {
+      if (index ==
+          DummyDb.categorizedQuestions[widget.passindex!][questionIndex]
+              ['answer']) {
         return Colors.green;
       }
       if (answerIndex == index) {
-        if (answerIndex == DummyDb.questions[questionIndex]['answer']) {
+        if (answerIndex ==
+            DummyDb.categorizedQuestions[widget.passindex!][questionIndex]
+                ['answer']) {
           return Colors.green;
         } else {
           return Colors.red;
@@ -105,24 +114,32 @@ class _HomeScreenState extends State<HomeScreen> {
     return Colors.white;
   }
 
-  Widget _buildQuestionSection() {
+  Widget _buildQuestionSection(int passindex) {
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        height: 250,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
-          color: Colors.grey,
-        ),
-        child: Text(
-          DummyDb.questions[questionIndex]['question'],
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 25,
+      child: Stack(children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          height: 250,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            color: Colors.grey,
+          ),
+          child: Text(
+            DummyDb.categorizedQuestions[widget.passindex!][questionIndex]
+                ['question'],
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+            ),
           ),
         ),
-      ),
+        answerIndex ==
+                DummyDb.categorizedQuestions[widget.passindex!][questionIndex]
+                    ['answer']
+            ? Lottie.asset('assets/lottie/Animation - 1724077041018.json')
+            : const SizedBox(),
+      ]),
     );
   }
 }

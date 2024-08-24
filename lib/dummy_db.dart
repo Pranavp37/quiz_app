@@ -1,4 +1,111 @@
 class DummyDb {
+  static List categoreies = [
+    {
+      "imageurl": 'assets/images/basketball-ball.png',
+      "CategoryName": 'Sports',
+      "QuestionNo": '10 Questions',
+    },
+    {
+      "imageurl": 'assets/images/calculator.png',
+      "CategoryName": 'Maths',
+      "QuestionNo": '15 Questions',
+    },
+    {
+      "imageurl": 'assets/images/biology.png',
+      "CategoryName": 'Biology',
+      "QuestionNo": '20 Questions',
+    },
+    {
+      "imageurl": 'assets/images/test_tube.png',
+      "CategoryName": 'Chemistry',
+      "QuestionNo": '10 Questions',
+    },
+  ];
+
+static List<List<Map<String, dynamic>>> categorizedQuestions = [
+  // Category: Sports
+  [
+    {
+      "question": "Which country won the FIFA World Cup in 2018?",
+      "options": ["Brazil", "Germany", "France", "Argentina"],
+      "answer": 2, // France
+    },
+    {
+      "question": "What sport is known as 'the beautiful game'?",
+      "options": ["Basketball", "Cricket", "Football (Soccer)", "Tennis"],
+      "answer": 2, // Football (Soccer)
+    },
+    {
+      "question": "Who has won the most Olympic gold medals?",
+      "options": ["Usain Bolt", "Michael Phelps", "Carl Lewis", "Mark Spitz"],
+      "answer": 1, // Michael Phelps
+    },
+    // Add 7 more Sports questions here...
+  ],
+  
+  // Category: Math
+  [
+    {
+      "question": "What is 5 + 7?",
+      "options": ["10", "11", "12", "13"],
+      "answer": 2, // 12
+    },
+    {
+      "question": "What is the value of Pi (π) to two decimal places?",
+      "options": ["3.14", "2.72", "1.41", "1.61"],
+      "answer": 0, // 3.14
+    },
+    {
+      "question": "What is the derivative of x²?",
+      "options": ["1", "x", "2x", "x²"],
+      "answer": 2, // 2x
+    },
+    // Add 7 more Math questions here...
+  ],
+  
+  // Category: Biology
+  [
+    {
+      "question": "What is the powerhouse of the cell?",
+      "options": ["Nucleus", "Ribosome", "Mitochondria", "Golgi apparatus"],
+      "answer": 2, // Mitochondria
+    },
+    {
+      "question": "Which part of the plant conducts photosynthesis?",
+      "options": ["Root", "Stem", "Leaf", "Flower"],
+      "answer": 2, // Leaf
+    },
+    {
+      "question": "What is the basic unit of life?",
+      "options": ["Atom", "Molecule", "Cell", "Organ"],
+      "answer": 2, // Cell
+    },
+    // Add 7 more Biology questions here...
+  ],
+  
+  // Category: Chemistry
+  [
+    {
+      "question": "What is the chemical symbol for water?",
+      "options": ["O", "H", "H2O", "HO"],
+      "answer": 2, // H2O
+    },
+    {
+      "question": "What is the atomic number of carbon?",
+      "options": ["6", "8", "12", "14"],
+      "answer": 0, // 6
+    },
+    {
+      "question": "Which gas is most abundant in the Earth's atmosphere?",
+      "options": ["Oxygen", "Hydrogen", "Nitrogen", "Carbon dioxide"],
+      "answer": 2, // Nitrogen
+    },
+    // Add 7 more Chemistry questions here...
+  ],
+];
+
+
+
   static List<Map<String, dynamic>> questions = [
     {
       "question": "What is the capital of France?",
