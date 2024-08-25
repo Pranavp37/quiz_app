@@ -8,7 +8,11 @@ class Optionscard extends StatelessWidget {
       required this.optionindex,
       this.onTap,
       required this.col,
-      this.passindex});
+      this.passindex,
+      this.answerindex,
+      this.icondata});
+  final IconData? icondata;
+  final int? answerindex;
   final int? passindex;
   final int questionIndex;
   final int optionindex;
@@ -40,9 +44,9 @@ class Optionscard extends StatelessWidget {
               ),
               IconButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.circle_outlined,
-                    color: Colors.white,
+                  icon: Icon(
+                    icondata,
+                    color: col,
                     size: 28,
                   ))
             ],

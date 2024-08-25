@@ -9,6 +9,24 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(size: 40, color: Colors.white),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+        actions: const [
+          CircleAvatar(
+            radius: 25,
+            backgroundImage: NetworkImage(
+                'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg'),
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.grey.shade800,
+      ),
       backgroundColor: Colors.black54,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
@@ -16,35 +34,35 @@ class CategoryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //appBar
-            const Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hi,John',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                      ),
-                    ),
-                    Text(
-                      'Lets make this day productive',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                CircleAvatar(
-                  radius: 28,
-                  backgroundImage: NetworkImage(
-                      'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg'),
-                )
-              ],
-            ),
+            // const Row(
+            //   children: [
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'Hi,John',
+            //           style: TextStyle(
+            //             color: Colors.white,
+            //             fontSize: 30,
+            //           ),
+            //         ),
+            //         Text(
+            //           'Lets make this day productive',
+            //           style: TextStyle(
+            //             color: Colors.grey,
+            //             fontSize: 16,
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //     Spacer(),
+            //     CircleAvatar(
+            //       radius: 28,
+            //       backgroundImage: NetworkImage(
+            //           'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg'),
+            //     )
+            //   ],
+            // ),
             const SizedBox(
               height: 25,
             ),
@@ -140,8 +158,8 @@ class CategoryScreen extends StatelessWidget {
                 itemCount: 4,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 10,
-                    mainAxisSpacing: 20,
-                    mainAxisExtent: 245,
+                    mainAxisSpacing: 5,
+                    mainAxisExtent: 254,
                     crossAxisCount: 2),
                 itemBuilder: (context, index) => SizedBox(
                   child: GestureDetector(

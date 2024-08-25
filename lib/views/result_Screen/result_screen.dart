@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/dummy_db.dart';
+import 'package:quiz/views/category_Screen/category_screen.dart';
 import 'package:quiz/views/home_screen/home_screen.dart';
 
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({super.key, required this.correctAns});
+  const ResultScreen({super.key, required this.correctAns, this.passIndex});
   final int correctAns;
+  final int? passIndex;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -48,7 +50,7 @@ class _ResultScreenState extends State<ResultScreen> {
               style: TextStyle(color: Colors.white, fontSize: 32),
             ),
             Text(
-              '${widget.correctAns} / ${DummyDb.questions.length}',
+              '${widget.correctAns} / ${DummyDb.categorizedQuestions[widget.passIndex!].length}',
               style: const TextStyle(color: Colors.green, fontSize: 35),
             ),
             Text(
@@ -56,7 +58,7 @@ class _ResultScreenState extends State<ResultScreen> {
               style: const TextStyle(color: Colors.white, fontSize: 19),
             ),
             Text(
-              'Wrong Answers:${DummyDb.questions.length - widget.correctAns}',
+              'Wrong Answers:${DummyDb.categorizedQuestions[widget.passIndex!].length - widget.correctAns}',
               style: const TextStyle(color: Colors.white, fontSize: 19),
             ),
             const Text(
@@ -67,7 +69,11 @@ class _ResultScreenState extends State<ResultScreen> {
               height: 30,
             ),
             GestureDetector(
-              onTap: () => Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const HomeScreen(),)),
+              onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CategoryScreen(),
+                  )),
               child: Container(
                   height: 50,
                   width: 100,
@@ -89,7 +95,9 @@ class _ResultScreenState extends State<ResultScreen> {
   }
 
   int getpercentage() {
-    double percentage = (widget.correctAns / DummyDb.questions.length) * 100;
+    double percentage = (widget.correctAns /
+            DummyDb.categorizedQuestions[widget.passIndex!].length) *
+        100;
     if (percentage >= 80) {
       return 3;
     } else if (percentage >= 50) {
