@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:quiz/dummy_db.dart';
 import 'package:quiz/views/home_screen/home_screen.dart';
 
@@ -13,6 +13,9 @@ class CategoryScreen extends StatelessWidget {
         iconTheme: const IconThemeData(size: 40, color: Colors.white),
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
+        centerTitle: true,
+        title: const Text('Quizz App'),
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 28),
         actions: const [
           CircleAvatar(
             radius: 25,
@@ -26,6 +29,67 @@ class CategoryScreen extends StatelessWidget {
       ),
       drawer: Drawer(
         backgroundColor: Colors.grey.shade800,
+        child: Container(
+          padding: const EdgeInsets.only(top: 80, left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage: NetworkImage(
+                            'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg'),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Hi,John',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),
+                      ),
+                      Text(
+                        'Lets make this day productive',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 150,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Dark',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Switch(
+                    inactiveTrackColor: Colors.amber,
+                    value: true,
+                    onChanged: (value) {},
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
       backgroundColor: Colors.black54,
       body: Container(
@@ -33,36 +97,6 @@ class CategoryScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //appBar
-            // const Row(
-            //   children: [
-            //     Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Text(
-            //           'Hi,John',
-            //           style: TextStyle(
-            //             color: Colors.white,
-            //             fontSize: 30,
-            //           ),
-            //         ),
-            //         Text(
-            //           'Lets make this day productive',
-            //           style: TextStyle(
-            //             color: Colors.grey,
-            //             fontSize: 16,
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //     Spacer(),
-            //     CircleAvatar(
-            //       radius: 28,
-            //       backgroundImage: NetworkImage(
-            //           'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg'),
-            //     )
-            //   ],
-            // ),
             const SizedBox(
               height: 25,
             ),
