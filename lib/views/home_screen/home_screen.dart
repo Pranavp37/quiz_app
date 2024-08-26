@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else {
           _timer.cancel();
           gotoNextQuestion();
+          answerIndex = null;
         }
       });
     });
@@ -62,13 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 30,
               ),
+
               //circularPercentIndicator
 
               CircularPercentIndicator(
                 radius: 40,
                 progressColor: Colors.green,
                 percent: percent,
-                lineWidth: 5,
+                lineWidth: 8,
                 center: Text(
                   '$timeleft',
                   style:

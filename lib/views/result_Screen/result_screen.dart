@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/dummy_db.dart';
 import 'package:quiz/views/category_Screen/category_screen.dart';
-import 'package:quiz/views/home_screen/home_screen.dart';
+
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key, required this.correctAns, this.passIndex});
@@ -61,10 +61,10 @@ class _ResultScreenState extends State<ResultScreen> {
               'Wrong Answers:${DummyDb.categorizedQuestions[widget.passIndex!].length - widget.correctAns}',
               style: const TextStyle(color: Colors.white, fontSize: 19),
             ),
-            const Text(
-              'Skipped Questions:0',
-              style: TextStyle(color: Colors.white, fontSize: 19),
-            ),
+            // const Text(
+            //   'Skipped Questions:0',
+            //   style: TextStyle(color: Colors.white, fontSize: 19),
+            // ),
             const SizedBox(
               height: 30,
             ),
